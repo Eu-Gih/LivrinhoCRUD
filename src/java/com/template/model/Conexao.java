@@ -1,0 +1,20 @@
+package com.template.model;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+// Classe responsável pela conexão do Java ao banco de dados
+public class Conexao {
+    static String conexao = "jdbc:postgresql://localhost:5432/Livros";
+    static String usuario = "postgres";
+    static String senha = "postgres";
+
+    public Connection ConectaBD() {
+        try {
+            return DriverManager.getConnection(conexao, usuario, senha);
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+}
